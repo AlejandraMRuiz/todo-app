@@ -1,43 +1,51 @@
 
+
+
+
+
+//TREVOR:
+// What needs to happen here is that the addTask function should 
+//fire when the user submits their todo information in the browser 
+//by clicking a button or hitting enter.
+
+
 const todos = [ "dishes", "laundry", "take over the world" ];
+const inputBox = document.getElementById("inputBox");
 
 //WORKED:
 // function createList() {
 //     const ul = document.getElementById("list");
 //     const li = document.createElement("li");
-//     //just for fun:
-//     //li.textContent = "Peralta, you are an amazing detective slash genius";
 //     li.textContent = todos[2];
 //     ul.appendChild(li);
 // }
 
+// createList();
+
 //DOESN'T WORK YET (console error lists 'inputBox' in if statement as null):
 function addTask()   {
-    const inputBox = document.getElementById("inputBox");
     //if (inputBox.value === " ") {
     //maybe this is simpler:    
     if (!inputBox.value) {
         alert("Please enter a todo!");
     }
-        else if (inputBox.value) and (KeyboardEvent.code === 13); {
+        else    {
             const ul = document.getElementById("list");
             const li = document.createElement("li");
             ul.appendChild(li);
         }
 }
 
-window.onload = addTask();
+inputBox.addEventListener("keyup", (event) => {
+    if (KeyboardEvent.code === 13)  {
+        addTask(); 
+    } 
+});
 
-// window.addEventListener("DOMContentLoaded", (event) => {
-//     inputBox.addEventListener("inputBox", addTask());  
-// });
+
+//window.onload
 
 
-// inputBox.addEventListener("inputBox", (event) =>   {
-//     if (event.which === 13) {
-//     addTask();
-//     } 
-// });
 
 
 
