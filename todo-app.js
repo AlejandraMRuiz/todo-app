@@ -1,6 +1,6 @@
 
 const inputBox = document.getElementById("inputBox");
-const task = document.getElementById("li");
+//const task = document.getElementById("li");
 
 
 function addTask(keyboardEvent)   {
@@ -11,10 +11,31 @@ function addTask(keyboardEvent)   {
         ul.appendChild(li);
         li.textContent = text;
         console.log("text value is: ", text);
+        const strike = li.value.write(li.strike());
+        //below line printed to console.log
+        //li.addEventListener("click", function()    {
+        li.addEventListener("click", strike);    //{
+            //below log prints
+        //     console.log("you clicked me");
+        // });
     }
 }
 
 inputBox.addEventListener("keyup", addTask);
+
+
+// function addTask(keyboardEvent)   {
+//     if(keyboardEvent.keyCode === 13)   {
+//         const text = inputBox.value;
+//         const ul = document.getElementById("list");
+//         const li = document.createElement("li");
+//         ul.appendChild(li);
+//         li.textContent = text;
+//         console.log("text value is: ", text);
+//     }
+// }
+
+// inputBox.addEventListener("keyup", addTask);
 
 
 /////////////////////////////////////////////////////
@@ -23,14 +44,14 @@ inputBox.addEventListener("keyup", addTask);
 /////////////////////////////////////////////////////
 
 
-function strikeTask(mouseEvent)   {
-    if(mouseEvent.code === "click")   {
-        console.log("you clicked me!");
-        task.value.write(str.strike());
-    }    
-}
+// function strikeTask(mouseEvent)   {
+//     if(mouseEvent.code === "click")   {
+//         console.log("you clicked me!");
+//         task.value.write(str.strike());
+//     }    
+// }
 
-task.addEventListener("click", strikeTask);
+// task.addEventListener("click", strikeTask);
 
 
 
