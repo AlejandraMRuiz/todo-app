@@ -38,11 +38,17 @@ h2  {
     text-align: center;
 }
 
-#deleteList {
+/* attempt to close gap btwn default bulletpoint and task <li> */
+/* ul  {
+    text-align: center;
+} */
+
+/* for button that deletes whole list */
+/* #deleteList {
     background-color: black;
     color: #00E8FF;
     font-family: monospace;
     font-size: 30px;
     border: 2px solid; 
     text-align: center;
-}
+} */
