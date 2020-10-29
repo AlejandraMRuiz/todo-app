@@ -1,5 +1,7 @@
 
 const inputBox = document.getElementById("inputBox");
+const task = document.getElementById("li");
+
 
 function addTask(keyboardEvent)   {
     if(keyboardEvent.keyCode === 13)   {
@@ -13,6 +15,23 @@ function addTask(keyboardEvent)   {
 }
 
 inputBox.addEventListener("keyup", addTask);
+
+
+/////////////////////////////////////////////////////
+// above code works
+// currently working below code
+/////////////////////////////////////////////////////
+
+
+function strikeTask(mouseEvent)   {
+    if(mouseEvent.code === "click")   {
+        console.log("you clicked me!");
+        task.value.write(str.strike());
+    }    
+}
+
+task.addEventListener("click", strikeTask);
+
 
 
 
@@ -35,6 +54,7 @@ inputBox.addEventListener("keyup", addTask);
 
 //STEP 3: When task completed, user clicks task to strikethrough. 
 //*If user clicks task is true then console.log strikethrough works.
+//   i n   p r o g r e s s
 
 //STEP 4: Create a button that individually deletes tasks that are strikethrough.
 //*Check button functionality using console.log.
