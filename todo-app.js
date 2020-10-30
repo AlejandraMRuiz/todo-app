@@ -1,5 +1,6 @@
 
 const inputBox = document.getElementById("inputBox");
+const deleteListBtn = document.getElementById("deleteListBtn");
 
 
 function renderTask(keyboardEvent)   {
@@ -18,6 +19,16 @@ function renderTask(keyboardEvent)   {
 }
 
 inputBox.addEventListener("keyup", renderTask);
+
+
+function deleteList() { 
+    const parent = document.getElementById("list");
+    parent.innerHTML = ""; 
+} 
+
+deleteListBtn.addEventListener("click", deleteList);
+
+
 
 
 
@@ -42,20 +53,21 @@ inputBox.addEventListener("keyup", renderTask);
 //*If user clicks task is true then console.log strikethrough works.
 //DONE!!!
 
-//STEP 4: Create a button that individually deletes tasks that are strikethrough.
-//*Check button functionality using console.log.
+//STEP 4: Add a "delete list" button and get it working.
+//Check it.
+//DONE!!!
 
 //STEP 5: Fix input field so it clears after hitting enter vs. user doing so manually.
 //Check it.
 
-//STEP 6: Add a "clear all" button.
-//Check it.
+//STEP 6: Create a button that individually deletes tasks that are strikethrough.
+//*Check button functionality using console.log.
 
 //STEP 7: Upgrade style.
-//Check.
+//Check it.
 
 //STEP 8: Clean & refactor code.
-//Check.
+//Check it.
 
 
 //NOTES:
@@ -68,3 +80,12 @@ inputBox.addEventListener("keyup", renderTask);
 
 //const inputBox = document.getElementById(".inputBox");
 //const addBtn = document.querySelector("#addBtn");
+
+// function deleteList()   {
+//     list.removeChild(list.childNodes[0]);
+// }
+
+// deleteListBtn.addEventListener("click", deleteList);
+
+// var list = document.getElementById("myList");   // Get the <ul> element with id="myList"
+//            // Remove <ul>'s first child node (index 0)
