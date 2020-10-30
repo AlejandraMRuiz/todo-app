@@ -28,6 +28,7 @@ function renderTask(keyboardEvent)   {
         var clickCount = 0;
         
         li.addEventListener("click", function() {
+            //debugger
             clickCount++;
             if (clickCount === 1) {
                 singleClickTimer = setTimeout(function() {
@@ -41,8 +42,11 @@ function renderTask(keyboardEvent)   {
             }
         }, false);
         localStorage.setItem("list", list.value);
-        //below line didn't work:
+        //below 4 lines didn't work:
+        //window.localStorage.setItem("user", JSON.stringify(ul));
         //window.localStorage.setItem("user", JSON.stringify(li));
+        //window.localStorage.setItem("li", JSON.stringify(li));
+        //window.localStorage.setItem("list", JSON.stringify(ul));
     }
 }
 
