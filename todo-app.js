@@ -11,6 +11,9 @@ function renderTask(keyboardEvent)   {
         ul.appendChild(li);
         li.textContent = text;
         console.log("text value is: ", text);
+        //testing line:15 
+        inputBox.value = "";
+        inputBox.placeholder = "";
 
         function singleClick() {
             console.log("you clicked me");
@@ -87,15 +90,21 @@ deleteListBtn.addEventListener("click", deleteList);
 
 //STEP 6: Fix input field so it clears after hitting enter vs. user doing so manually.
 //Check it.
+//DONE!!!
 
-//STEP 7: Ensure that when user clicks task again, the strikethrough comes off it
+//STEP 7: Clear placeholder "add a todo" in input element.
+//Check it.
+//DONE!!!
+
+//STEP 8: Ensure that when user clicks task again, the strikethrough comes off it
 //in case they accidentally marked a task as complete.
 //Check it. 
+// in   p r o g r e s s 
 
-//STEP 8: Upgrade style.
+//STEP 9: Upgrade style.
 //Check it.
 
-//STEP 9: Clean & refactor code, including changing out any "innerHTMLs" for alternative.
+//STEP 10: Clean & refactor code, including changing out any "innerHTMLs" for alternative.
 //Check it.
 
 

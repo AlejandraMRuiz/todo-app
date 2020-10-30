@@ -19,16 +19,6 @@ h2  {
     font-size: 20px;
 }
 
-/* can I redesign the default bulletpoint to this? */
-/* button  {
-    background-color: black;
-    color: #00E8FF;
-    border-radius: 50%;
-    border: 2px solid; 
-    height: 30px;
-    width: 30px;
-} */
-
 #inputBox  {
     background-color: black;
     color: #00E8FF;
@@ -44,15 +34,10 @@ ul {
     padding: 0;
   }
 
-
-
-
-/* for button that deletes whole list */
-/* #deleteList {
+button {
     background-color: black;
-    color: #00E8FF;
+    color: grey;
     font-family: monospace;
-    font-size: 30px;
-    border: 2px solid; 
+    font-size: 15px;
     text-align: center;
-} */
+}
