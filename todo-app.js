@@ -4,6 +4,7 @@ const deleteListBtn = document.getElementById("deleteListBtn");
 
 
 function renderTask(keyboardEvent)   {
+    debugger
     if(keyboardEvent.keyCode === 13)   {
         const text = inputBox.value;
         const ul = document.getElementById("list");
@@ -11,7 +12,6 @@ function renderTask(keyboardEvent)   {
         ul.appendChild(li);
         li.textContent = text;
         console.log("text value is: ", text);
-        //testing line:15 
         inputBox.value = "";
         inputBox.placeholder = "";
 
@@ -40,6 +40,9 @@ function renderTask(keyboardEvent)   {
                 doubleClick();
             }
         }, false);
+        localStorage.setItem("list", list.value);
+        //below line didn't work:
+        //window.localStorage.setItem("user", JSON.stringify(li));
     }
 }
 
@@ -52,6 +55,8 @@ function deleteList() {
 } 
 
 deleteListBtn.addEventListener("click", deleteList);
+
+
 
 
 
@@ -101,10 +106,16 @@ deleteListBtn.addEventListener("click", deleteList);
 //Check it. 
 // in   p r o g r e s s 
 
-//STEP 9: Upgrade style.
+//STEP 9: Get local storage bit working.
 //Check it.
 
-//STEP 10: Clean & refactor code, including changing out any "innerHTMLs" for alternative.
+//STEP 10: Add app instructions that say, "click task to mark as completed" and "dblclick task to delete it".
+//Check it.
+
+//STEP 10: Upgrade style.
+//Check it.
+
+//STEP 11: Clean & refactor code, including changing out any "innerHTMLs" for alternative.
 //Check it.
 
 
