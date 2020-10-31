@@ -1,7 +1,10 @@
 
 const inputBox = document.getElementById("inputBox");
 const deleteListBtn = document.getElementById("deleteListBtn");
-
+let savedItems = JSON.parse(localStorage.getItem("userList"));
+if (savedItems == null) {
+    savedItems = [];
+}
 
 function renderTask(keyboardEvent)   {
     //debugger
@@ -28,7 +31,7 @@ function renderTask(keyboardEvent)   {
         var clickCount = 0;
         
         li.addEventListener("click", function() {
-            debugger
+            //debugger
             clickCount++;
             if (clickCount === 1) {
                 singleClickTimer = setTimeout(function() {
@@ -42,13 +45,48 @@ function renderTask(keyboardEvent)   {
             }
         }, false);
         
+        console.log(text);
+        savedItems.push(text);
+        savedItems.forEach(item => {
+            localStorage.setItem("userList", JSON.stringify(savedItems));
+            localStorage.getItem("userList");
+        });
+        // create a new li for each item
+        // you already have the functionality to create 
+        // a list item and display it to the user,            
+        // here you can use the same logic to do that.
+
+
+
+        // userList.push(text);
+        // localStorage.setItem("update", userList);
+        // localStorage.getItem("update");
+        // we "got" the list above, but we're not DISPLAYING it.
+
+        // for (var i = 0; i < userList.length; i++){
+        //     localStorage.getItem("update");
+        //     console.log(savedItems);
+        // }
+
+
+        // You're on the right track here with looping through the items 
+        // in localStorage to display it back to the user.  
+        // However, since the items in localStorage are strings 
+        // we need to parse that data back so we can use it.
+        
+
+    
+
+
+
+
         // below 2-line combo didn't work:
         // localStorage.setItem("userData", JSON.stringify(ul));
         // localStorage.getItem("userData");
         
         // below 2-line combo didn't work either:
-        localStorage.setItem("userData", JSON.stringify(text));
-        localStorage.getItem("userData");
+        // localStorage.setItem("userData", JSON.stringify(text));
+        // localStorage.getItem("userData");
 
         // below 3-line combo didn't work:
         // localStorage.setItem("userData", JSON.stringify(text));
@@ -62,6 +100,34 @@ function renderTask(keyboardEvent)   {
 
     }
 }
+
+
+
+// In your renderTask() you're setting the localStorage correctly by doing:
+// localStorage.setItem('update', JSON.stringify(text)); 
+
+// however, to make this work correctly you need to create either 
+// an object or an array to store your todo in.  
+
+// That way all you have to do is loop through the array 
+// from localStorage and display that list as you're doing now.  
+// Here's what I would suggest:
+
+// 1. create an empty array in your global scope - DONE
+// 2. push your todos in that array
+// 3. save that array into localStorage
+// 4. retrieve the list from localStorage
+// 5. display the list
+
+
+
+
+
+
+
+
+
+
 
 inputBox.addEventListener("keyup", renderTask);
 
