@@ -1,13 +1,21 @@
 
 const inputBox = document.getElementById("inputBox");
 const deleteListBtn = document.getElementById("deleteListBtn");
-let savedItems = JSON.parse(localStorage.getItem("userList"));
-if (savedItems == null) {
-    savedItems = [];
-}
+
+let savedItems = JSON.parse(localStorage.getItem("userList")) || [];
+
+
+//saves user's list
+savedItems.forEach((item) => {
+    console.log(item);
+    const ul = document.getElementById("list");
+    const li = document.createElement("li");
+    ul.appendChild(li);
+    li.textContent = item
+});    
+
 
 function renderTask(keyboardEvent)   {
-    //debugger
     if(keyboardEvent.keyCode === 13)   {
         const text = inputBox.value;
         const ul = document.getElementById("list");
@@ -31,7 +39,6 @@ function renderTask(keyboardEvent)   {
         var clickCount = 0;
         
         li.addEventListener("click", function() {
-            //debugger
             clickCount++;
             if (clickCount === 1) {
                 singleClickTimer = setTimeout(function() {
@@ -44,103 +51,30 @@ function renderTask(keyboardEvent)   {
                 doubleClick();
             }
         }, false);
-        
+
+        //stores saved list locally
         console.log(text);
         savedItems.push(text);
-        savedItems.forEach(item => {
-            localStorage.setItem("userList", JSON.stringify(savedItems));
-            localStorage.getItem("userList");
-        });
-        // create a new li for each item
-        // you already have the functionality to create 
-        // a list item and display it to the user,            
-        // here you can use the same logic to do that.
-
-
-
-        // userList.push(text);
-        // localStorage.setItem("update", userList);
-        // localStorage.getItem("update");
-        // we "got" the list above, but we're not DISPLAYING it.
-
-        // for (var i = 0; i < userList.length; i++){
-        //     localStorage.getItem("update");
-        //     console.log(savedItems);
-        // }
-
-
-        // You're on the right track here with looping through the items 
-        // in localStorage to display it back to the user.  
-        // However, since the items in localStorage are strings 
-        // we need to parse that data back so we can use it.
-        
-
-    
-
-
-
-
-        // below 2-line combo didn't work:
-        // localStorage.setItem("userData", JSON.stringify(ul));
-        // localStorage.getItem("userData");
-        
-        // below 2-line combo didn't work either:
-        // localStorage.setItem("userData", JSON.stringify(text));
-        // localStorage.getItem("userData");
-
-        // below 3-line combo didn't work:
-        // localStorage.setItem("userData", JSON.stringify(text));
-        // const userStorage = localStorage.getItem("userData");
-        // li.innerHTML = userStorage;
-
-        // below 3-line combo didn't work either:
-        // localStorage.setItem("userData", JSON.stringify(ul));
-        // const userStorage = localStorage.getItem("userData");
-        // li.innerHTML = userStorage;
-
+        localStorage.setItem("userList", JSON.stringify(savedItems));
     }
 }
-
-
-
-// In your renderTask() you're setting the localStorage correctly by doing:
-// localStorage.setItem('update', JSON.stringify(text)); 
-
-// however, to make this work correctly you need to create either 
-// an object or an array to store your todo in.  
-
-// That way all you have to do is loop through the array 
-// from localStorage and display that list as you're doing now.  
-// Here's what I would suggest:
-
-// 1. create an empty array in your global scope - DONE
-// 2. push your todos in that array
-// 3. save that array into localStorage
-// 4. retrieve the list from localStorage
-// 5. display the list
-
-
-
-
-
-
-
-
-
 
 
 inputBox.addEventListener("keyup", renderTask);
 
 
-function deleteList() { 
+function deleteList() {
     const parent = document.getElementById("list");
-    parent.innerHTML = ""; 
-} 
+    parent.innerHTML = "";
+    localStorage.clear();
+}
+
 
 deleteListBtn.addEventListener("click", deleteList);
 
 
 
+       
 
 
 
@@ -193,11 +127,15 @@ deleteListBtn.addEventListener("click", deleteList);
 //in case they accidentally marked a task as complete.
 //Check it. 
 
-//STEP 10: Add app instructions that say, "click task to mark as completed" and "dblclick task to delete it".
+//STEP 10: Add app instructions that indicate to dblclick task to delete them.
 //Check it.
 
-//STEP 11: Upgrade style.
+//STEP 11: Eliminate extra space left behind when an item mid-list is deleted.
 //Check it.
 
-//STEP 12: Clean & refactor code, including changing out any "innerHTMLs" for alternative.
+//STEP 12: Upgrade style.
+//Check it.
+
+//STEP 13: Clean & refactor code, including changing out any "innerHTMLs" for alternative.
+//Also, is there a better way to do this so you're not repeating yourself (i.e. ul & li consts)?
 //Check it.
