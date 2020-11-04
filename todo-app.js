@@ -23,6 +23,9 @@ function renderTask(keyboardEvent)   {
         ul.appendChild(li);
         li.textContent = text;
         console.log("text value is: ", text);
+        //testing adding type to element from JS
+        const checkbox = document.createAttribute("")
+        li.style = checkbox;
         inputBox.value = "";
         inputBox.placeholder = "";
 
@@ -52,9 +55,16 @@ function renderTask(keyboardEvent)   {
             }
         }, false);
 
+        //testing Andy's suggestion:
+        const todoItem = {
+        text: text,
+        isChecked: false
+        }
+
         //stores saved list locally
         console.log(text);
-        savedItems.push(text);
+        //Based on Andy's suggestion, below param changed: text -> todoItem
+        savedItems.push(todoItem);
         localStorage.setItem("userList", JSON.stringify(savedItems));
     }
 }
