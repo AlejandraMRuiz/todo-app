@@ -12,6 +12,10 @@ savedItems.forEach((item) => {
     const li = document.createElement("li");
     ul.appendChild(li);
     li.textContent = item
+    // IF user clicks on item (strikes it), strike it here too. 
+    // if (singleClick())   {
+    //     item = item.strike();
+    // }
 });    
 
 
@@ -24,14 +28,17 @@ function renderTask(keyboardEvent)   {
         li.textContent = text;
         console.log("text value is: ", text);
         //testing adding type to element from JS
-        const checkbox = document.createAttribute("")
-        li.style = checkbox;
+        // const checkbox = document.createAttribute("")
+        // li.style = checkbox;
         inputBox.value = "";
         inputBox.placeholder = "";
 
         function singleClick() {
             console.log("you clicked me");
             li.innerHTML = text.strike();
+            //below line doesn't work as item is defined locally 
+            //inside savedItems for loop
+            item = item.strike();
         }
 
         function doubleClick() {
@@ -55,16 +62,23 @@ function renderTask(keyboardEvent)   {
             }
         }, false);
 
-        //testing Andy's suggestion:
-        const todoItem = {
-        text: text,
-        isChecked: false
+        function deleteItemFromLocalStorage()   {
+            console.log("text value is: ", text);
+            
+            text = "";
         }
+
+        //testing Andy's suggestion:
+        // const todoItem = {
+        // text: text,
+        // isChecked: false
+        // }
 
         //stores saved list locally
         console.log(text);
         //Based on Andy's suggestion, below param changed: text -> todoItem
-        savedItems.push(todoItem);
+        //savedItems.push(todoItem);
+        savedItems.push(text);
         localStorage.setItem("userList", JSON.stringify(savedItems));
     }
 }
