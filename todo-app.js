@@ -19,6 +19,20 @@ savedItems.forEach((item) => {
 });    
 
 
+function singleClick(li) {
+    console.log("you clicked me");
+    li.innerHTML = text.strike();
+    //below line doesn't work as item is defined locally 
+    //inside savedItems for loop
+    item = item.strike();
+}
+
+function doubleClick() {
+    console.log("you double-clicked me");
+    li.innerHTML = "";
+}
+
+
 function renderTask(keyboardEvent)   {
     if(keyboardEvent.keyCode === 13)   {
         const text = inputBox.value;
@@ -33,18 +47,7 @@ function renderTask(keyboardEvent)   {
         inputBox.value = "";
         inputBox.placeholder = "";
 
-        function singleClick() {
-            console.log("you clicked me");
-            li.innerHTML = text.strike();
-            //below line doesn't work as item is defined locally 
-            //inside savedItems for loop
-            item = item.strike();
-        }
-
-        function doubleClick() {
-            console.log("you double-clicked me");
-            li.innerHTML = "";
-        }
+        
         
         var clickCount = 0;
         
@@ -53,7 +56,7 @@ function renderTask(keyboardEvent)   {
             if (clickCount === 1) {
                 singleClickTimer = setTimeout(function() {
                 clickCount = 0;
-                singleClick();
+                singleClick(li);
                 }, 400);
             } else if (clickCount === 2) {
                 clearTimeout(singleClickTimer);
