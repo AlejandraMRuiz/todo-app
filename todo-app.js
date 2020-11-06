@@ -19,14 +19,14 @@ savedItems.forEach((item) => {
 });    
 
 
-function singleClick(text) {
+function singleClick(li, text) {
     console.log("you clicked me");
     li.innerHTML = text.strike();
     //below line doesn't work as item is defined locally 
     //inside savedItems for loop
 }
 
-function doubleClick() {
+function doubleClick(li) {
     console.log("you double-clicked me");
     li.innerHTML = "";
 }
