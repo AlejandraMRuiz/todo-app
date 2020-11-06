@@ -19,12 +19,11 @@ savedItems.forEach((item) => {
 });    
 
 
-function singleClick(li) {
+function singleClick(text) {
     console.log("you clicked me");
     li.innerHTML = text.strike();
     //below line doesn't work as item is defined locally 
     //inside savedItems for loop
-    item = item.strike();
 }
 
 function doubleClick() {
@@ -56,7 +55,7 @@ function renderTask(keyboardEvent)   {
             if (clickCount === 1) {
                 singleClickTimer = setTimeout(function() {
                 clickCount = 0;
-                singleClick(li);
+                singleClick(li, text);
                 }, 400);
             } else if (clickCount === 2) {
                 clearTimeout(singleClickTimer);
