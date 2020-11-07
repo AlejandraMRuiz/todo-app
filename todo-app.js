@@ -1,4 +1,3 @@
-
 const inputBox = document.getElementById("inputBox");
 const deleteListBtn = document.getElementById("deleteListBtn");
 
@@ -50,7 +49,8 @@ function renderTask(keyboardEvent)   {
         
         var clickCount = 0;
         
-        li.addEventListener("click", function() {
+        
+        li.addEventListener("click", function(event) {
             clickCount++;
             if (clickCount === 1) {
                 singleClickTimer = setTimeout(function() {
@@ -165,3 +165,4 @@ deleteListBtn.addEventListener("click", deleteList);
 //STEP 13: Clean & refactor code, including changing out any "innerHTMLs" for alternative.
 //Also, is there a better way to do this so you're not repeating yourself (i.e. ul & li consts)?
 //Check it.
+
