@@ -1,7 +1,35 @@
+////////////////
+// only 1 var of 8 is null: liId.
+// note const task is affected by this.
+
 const inputBox = document.getElementById("inputBox");
 const deleteListBtn = document.getElementById("deleteListBtn");
+const ul = document.getElementById("list");
 
+debugger
+const li = document.createElement("li");
+const burger = "del-eat me when you're done debugging";
+// what if this li was not const but let and had an empty array?
+// that did not work
+// I put const back in place
+// let li = document.createElement("li") || [];
+
+
+// testing below 2 lines to fix null const liId
+// debugger shows values for both lines
+// but liId remains null
+ul.appendChild(li);
+const item = li.innerHTML;
+// liId = null
+// perhaps we don't need const liId
+//const liId = document.getElementById("li");
+const text = inputBox.value;
+const burger = "del-eat me when you're done debugging";
+// console re: task - Uncaught TypeError: Cannot read property 'value' of null
+// if we don't need const liId, we don't need const task
+//const task = liId.value;
 let savedItems = JSON.parse(localStorage.getItem("userList")) || [];
+
 
 
 //saves user's list
@@ -11,27 +39,13 @@ savedItems.forEach((item) => {
     const li = document.createElement("li");
     ul.appendChild(li);
     li.textContent = item
-    // IF user clicks on item (strikes it), strike it here too. 
-    // if (singleClick())   {
-    //     item = item.strike();
-    // }
 });    
 
 
-function singleClick(li, text) {
-    console.log("you clicked me");
-    li.innerHTML = text.strike();
-    //below line doesn't work as item is defined locally 
-    //inside savedItems for loop
-}
-
-function doubleClick(li) {
-    console.log("you double-clicked me");
-    li.innerHTML = "";
-}
 
 
-function renderTask(keyboardEvent)   {
+
+function addTask(keyboardEvent)   {
     if(keyboardEvent.keyCode === 13)   {
         const text = inputBox.value;
         const ul = document.getElementById("list");
@@ -49,7 +63,11 @@ function renderTask(keyboardEvent)   {
         
         var clickCount = 0;
         
-        
+
+
+        // below need to turn into 2 separate events: 
+        // 1. click 
+        // 2. dbl-click
         li.addEventListener("click", function(event) {
             clickCount++;
             if (clickCount === 1) {
@@ -64,17 +82,15 @@ function renderTask(keyboardEvent)   {
             }
         }, false);
 
-        function deleteItemFromLocalStorage()   {
-            console.log("text value is: ", text);
-            
-            text = "";
-        }
+
+        
 
         //testing Andy's suggestion:
         // const todoItem = {
         // text: text,
         // isChecked: false
         // }
+
 
         //stores saved list locally
         console.log(text);
@@ -86,7 +102,7 @@ function renderTask(keyboardEvent)   {
 }
 
 
-inputBox.addEventListener("keyup", renderTask);
+inputBox.addEventListener("keyup", addTask);
 
 
 function deleteList() {
@@ -100,6 +116,57 @@ deleteListBtn.addEventListener("click", deleteList);
 
 
 
+
+function singleClick() {
+    console.log("you clicked me");
+    item.strike();
+}
+
+
+// tested below code snippet to prevent return of null
+// did not work
+// window.addEventListener("DOMContentLoaded", (event) => {
+//     const liContent = document.getElementById("li");
+//     liContent.addEventListener("click", singleClick);  
+//   });
+
+
+
+// tested below code snippet to prevent return of null
+// did not work either
+// window.onload = document.getElementById("li").onclick = singleClick();
+
+
+
+// testing below code from clock app to prevent return of null
+window.addEventListener("DOMContentLoaded", () => {
+    const liContent = document.getElementById("li");
+    liContent.addEventListener("click", function(event) {
+      event.stopPropagation();
+      singleClick();
+    });  
+});
+
+
+
+
+
+// // Get the button, and when the user clicks on it, execute myFunction
+// perhaps we can replace this with above code snippet.
+//document.getElementById("li").onclick = singleClick();
+
+
+function doubleClick(li) {
+    console.log("you double-clicked me");
+    li.innerHTML = "";
+}
+
+
+
+
+// li.addEventListener("click", function(event)    {
+
+// });
        
 
 
