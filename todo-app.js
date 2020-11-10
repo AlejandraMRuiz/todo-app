@@ -24,7 +24,6 @@ const item = li.innerHTML;
 // perhaps we don't need const liId
 //const liId = document.getElementById("li");
 const text = inputBox.value;
-const burger = "del-eat me when you're done debugging";
 // console re: task - Uncaught TypeError: Cannot read property 'value' of null
 // if we don't need const liId, we don't need const task
 //const task = liId.value;
