@@ -15,14 +15,30 @@ savedItems.forEach((item) => {
 function renderTask(task)   {
     const ul = document.getElementById("list");
     const li = document.createElement("li");
+////// testing code between comments //////
 
+    const deleteItemBtn = document.createElement("button");
+    deleteItemBtn.className = "deleteItemBtn";
+    deleteItemBtn.appendChild(document.createTextNode("Delete"));
+    deleteItemBtn.addEventListener("click", function (e) {       
+        deleteLocalTask(task, function(){
+            localStorage.clear(li);    
+        });
+        ul.removeChild(li);
+// what does below line accomplish?
+        document.getElementById("task-description").focus();
+    });
+
+    li.appendChild(deleteItemBtn);    
+
+////// testing code between comments //////
     if (task.isChecked === true)    {
         li.style.textDecoration = "line-through";
     }
 
     li.addEventListener(
         "click",
-        function(event) {
+        function(e) {
         if (li.style.textDecoration === "line-through")  {
             li.style.textDecoration = "none";
             const savedItems = JSON.parse(localStorage.getItem("userList")) || [];

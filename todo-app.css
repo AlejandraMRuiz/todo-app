@@ -46,3 +46,9 @@ li {
     text-align: center;
     cursor: pointer;
 }
+
+#deleteItemBtn  {
+    background-color: grey;
+    color: grey;
+    font-family: monospace;
+}
