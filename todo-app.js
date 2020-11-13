@@ -2,6 +2,8 @@
 const inputBox = document.getElementById("inputBox");
 const deleteListBtn = document.getElementById("deleteListBtn");
 const li = document.createElement("li");
+// below className = attempt to flexbox my li(s)
+li.className = "taskListItem";
 const item = li.textContent;
 const text = inputBox.value;
 let savedItems = JSON.parse(localStorage.getItem("userList")) || [];
@@ -14,24 +16,24 @@ savedItems.forEach((item) => {
 
 function renderTask(task)   {
     const ul = document.getElementById("list");
+// isn't const li below unnecessary since it's already created globally?
+// I broke the app on commenting out const li, but that doesn't make sense as it's global...
     const li = document.createElement("li");
-////// testing code between comments //////
+////// * testing code between comments * //////
 
     const deleteItemBtn = document.createElement("button");
     deleteItemBtn.className = "deleteItemBtn";
     deleteItemBtn.appendChild(document.createTextNode("Delete"));
-    deleteItemBtn.addEventListener("click", function (e) {       
-        deleteLocalTask(task, function(){
-            localStorage.clear(li);    
-        });
+    deleteItemBtn.addEventListener("click", function(e) {       
+        deleteLocalTask(li);
         ul.removeChild(li);
 // what does below line accomplish?
-        document.getElementById("task-description").focus();
+        inputBox.focus();
     });
 
     li.appendChild(deleteItemBtn);    
 
-////// testing code between comments //////
+////// * testing code between comments * //////
     if (task.isChecked === true)    {
         li.style.textDecoration = "line-through";
     }
@@ -92,6 +94,11 @@ function deleteList() {
     parent.textContent = "";
     localStorage.clear();
 }
+
+
+function deleteLocalTask(li)  {
+    localStorage.clear(li);    
+};
 
 
 deleteListBtn.addEventListener("click", deleteList);
