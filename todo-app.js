@@ -1,7 +1,14 @@
 
 const inputBox = document.getElementById("inputBox");
 const deleteListBtn = document.getElementById("deleteListBtn");
-const li = document.createElement("li");
+let ul = document.getElementById("list");
+let li = document.createElement("li");
+let deleteItemBtn = document.createElement("deleteItemBtn");
+deleteItemBtn.className = "deleteItemBtn";
+deleteItemBtn.textContent = "delete";
+console.log(ul.appendChild(li));
+li.appendChild(deleteItemBtn);
+
 // below className = attempt to flexbox my li(s)
 li.className = "taskListItem";
 const item = li.textContent;
@@ -21,17 +28,17 @@ function renderTask(task)   {
     const li = document.createElement("li");
 ////// * testing code between comments * //////
 
-    const deleteItemBtn = document.createElement("button");
-    deleteItemBtn.className = "deleteItemBtn";
-    deleteItemBtn.appendChild(document.createTextNode("Delete"));
-    deleteItemBtn.addEventListener("click", function(e) {       
-        deleteLocalTask(li);
-        ul.removeChild(li);
-// what does below line accomplish?
-        inputBox.focus();
-    });
+//     const deleteItemBtn = document.createElement("button");
+//     deleteItemBtn.className = "deleteItemBtn";
+//     deleteItemBtn.appendChild(document.createTextNode("Delete"));
+//     deleteItemBtn.addEventListener("click", function(e) {       
+//         deleteLocalTask(li);
+//         ul.removeChild(li);
+// // what does below line accomplish?
+//         inputBox.focus();
+//     });
 
-    li.appendChild(deleteItemBtn);    
+//     li.appendChild(deleteItemBtn);    
 
 ////// * testing code between comments * //////
     if (task.isChecked === true)    {
@@ -170,10 +177,9 @@ deleteListBtn.addEventListener("click", deleteList);
 //Check it.
 //DONE!!!
 
-
-
 //STEP 13: Add button to delete individual list items.
 //Check it.
+//in progress...
 
 //STEP 14: Upgrade style as needed.
 //Check it.
