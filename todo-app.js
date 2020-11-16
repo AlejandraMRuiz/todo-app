@@ -5,7 +5,6 @@ let ul = document.getElementById("list");
 let li = document.createElement("li");
 let deleteItemBtn = document.createElement("deleteItemBtn");
 deleteItemBtn.className = "deleteItemBtn";
-deleteItemBtn.textContent = "delete";
 li.appendChild(deleteItemBtn);
 const item = li.textContent;
 const text = inputBox.value;
@@ -25,7 +24,7 @@ function renderTask(task)   {
     li.appendChild(document.createTextNode(task.text));
     const deleteItemBtn = document.createElement("button");
     deleteItemBtn.className = "deleteItemBtn";
-    deleteItemBtn.appendChild(document.createTextNode("delete"));
+    deleteItemBtn.appendChild(document.createTextNode("x"));
     deleteItemBtn.addEventListener("click", function(e) {       
         deleteSingleTaskFromLocalStorage(task.text);
         ul.removeChild(li);
@@ -60,8 +59,8 @@ function renderTask(task)   {
                  }
              }
              localStorage.setItem("userList", JSON.stringify(savedItems));
-          }
-     }, false);
+            }
+        }, false);
 
     ul.appendChild(li);
 }
@@ -179,11 +178,14 @@ deleteListBtn.addEventListener("click", deleteList);
 
 
 
-// STEP 14: Upgrade style as needed.
+// STEP 14: Ensure correct use of const & let.
+// Check it.
+// in progress...
+
+// STEP 15: Address questions in comments above (JS file).
+
+// STEP 16: Upgrade style as needed, including CSS notes in comments.
 // Check it.
 
-// STEP 15: Ensure correct use of const & let.
-// Check it.
-
-// STEP 15: Clean & refactor code as needed.
+// STEP 17: Clean & refactor code as needed.
 // Check it.
