@@ -61,7 +61,7 @@ li {
 /* now that I've added Chris' code, should this even be a class or is it an ID? */
 /* based on the code I just added myself, this is a class; not an ID */
 .deleteItemBtn  {
-    background-color: grey;
-    color: black;
+    background-color: black;
+    color: grey;
     font-family: monospace;
 }
