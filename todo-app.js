@@ -1,14 +1,14 @@
 
 const inputBox = document.getElementById("inputBox");
 const deleteListBtn = document.getElementById("deleteListBtn");
-let ul = document.getElementById("list");
-let li = document.createElement("li");
-let deleteItemBtn = document.createElement("deleteItemBtn");
+const ul = document.getElementById("list");
+const li = document.createElement("li");
+const deleteItemBtn = document.createElement("deleteItemBtn");
 deleteItemBtn.className = "deleteItemBtn";
 li.appendChild(deleteItemBtn);
 const item = li.textContent;
 const text = inputBox.value;
-let savedItems = JSON.parse(localStorage.getItem("userList")) || [];
+const savedItems = JSON.parse(localStorage.getItem("userList")) || [];
 
 
 savedItems.forEach((item) => {
@@ -28,7 +28,6 @@ function renderTask(task)   {
     deleteItemBtn.addEventListener("click", function(e) {       
         deleteSingleTaskFromLocalStorage(task.text);
         ul.removeChild(li);
-// what does below line accomplish?
         inputBox.focus();
     });
 
@@ -92,6 +91,7 @@ function deleteList() {
     const parent = document.getElementById("list");
     parent.textContent = "";
     localStorage.clear();
+    inputBox.focus();
 }
 
 
