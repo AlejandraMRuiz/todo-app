@@ -94,29 +94,3 @@ function checkOffItemAndSaveToLocalStorage(li, task)    {
         }, false);
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-// PROJECT PLAN:
-
-// STEP 14: Ensure correct use of const & let.
-// Check it.
-// in progress...
-
-// STEP 15: Address questions in comments above (JS file).
-
-// STEP 16: Upgrade style as needed, including CSS notes in comments.
-// Check it.
-
-// STEP 17: Clean & refactor code as needed.
-// Check it.
