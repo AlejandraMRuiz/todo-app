@@ -29,17 +29,17 @@ h2  {
 }
 
 ul {
-    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
     margin-top: 30px;
     padding: 0;
-  }
+}
 
-  /* when you can, come back and use a flexbox on <li> elements (or whatever
-  solution works) to fix the fact that user can click in empty space (right/left)
-  of task item to strike and un-strike it */
 li {
     cursor: pointer;
     background-color: black;
+    list-style: none;
 }
 
 #delete-list-btn {
